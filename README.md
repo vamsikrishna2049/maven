@@ -63,8 +63,8 @@ As per the pom.xml file configuration, it will generate the
 
 **Note:**
 	Generated Output file will be created inside the target folder.
-	Default home directory on maven
-		cd /usr/share/apache-maven/
+	**Default home directory on maven**
+        cd /usr/share/apache-maven/
 
 **Maven Repository**
 A maven repository is a directory of packaged JAR file with pom.xml file. 
@@ -90,7 +90,8 @@ By default, maven local repository is **%USER_HOME%/.m2 directory**. For example
 
 **maven local repository**
 Update location of Local Repository
-We can change the location of maven local repository by changing the **settings.xml** file. It is located in **MAVEN_HOME/conf/settings.xml**, for example: **E:\apache-maven-3.1.1\conf\settings.xml**.
+We can change the location of maven local repository by changing the **settings.xml** file. It is located in **MAVEN_HOME/conf/settings.xml**, 
+for example: **E:\apache-maven-3.1.1\conf\settings.xml**.
 
 <settings>
     <localRepository>C:\M2</localRepository>

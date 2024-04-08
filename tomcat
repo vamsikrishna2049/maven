@@ -1,0 +1,16 @@
+XHow to Install tomcat?
+	Visit the https://tomcat.apache.org/
+	Choose the required version
+	and copy the link for tar.gz
+	wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz
+	tar apache-tomcat-9.0.87.tar.gz
+	Tomcat home directory	apache-tomcat-9.x
+
+inside the apache-tomcat-9.x
+bin	tomcat services start/stop
+conf	holds configuration files for Tomcat. Important files such as server.xml (for server configuration), web.xml (for web application configuration), and tomcat-users.xml (for user authentication and authorization) are found here.
+lib	libraries
+logs	log details(access logs, error logs etc)
+temp	
+webapps	Generated war file from maven will be copied to here
+work	
