@@ -5,16 +5,7 @@ https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-prerq.html
 
 pre requisite
 =============
-1. Install java ( I'm installing JDK)
-   sudo yum install -y java-1.8.0-amazon-corretto-devel
-
-   Checking the java version
-   java -version
-
-2. git install
-   dnf install git -y
-   Checking the git version
-   git --version or git -v
+Install Java and git
 
 Install Apache Maven on Amazon Linux. 
 ==========================================
