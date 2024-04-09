@@ -1,16 +1,21 @@
-XHow to Install tomcat?
-	Visit the https://tomcat.apache.org/
-	Choose the required version
-	and copy the link for tar.gz
-	wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz
-	tar apache-tomcat-9.0.87.tar.gz
-	Tomcat home directory	apache-tomcat-9.x
+How to Install tomcat?
+1. Install Java
 
-inside the apache-tomcat-9.x
-bin	tomcat services start/stop
-conf	holds configuration files for Tomcat. Important files such as server.xml (for server configuration), web.xml (for web application configuration), and tomcat-users.xml (for user authentication and authorization) are found here.
-lib	libraries
-logs	log details(access logs, error logs etc)
-temp	
-webapps	Generated war file from maven will be copied to here
-work	
+2. Visit the https://tomcat.apache.org/
+3. Choose the required version, Under the Binary Distributions section choose core(*.tar.gz)
+4. copy the URL and in the linux terminal enter like below format.
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz
+5. unzip the tar file
+tar -xvf apache-tomcat-9.0.87.tar.gz
+
+Note:
+The default installation directory for Tomcat on Ubuntu is /var/lib/tomcat9 for Tomcat 9
+
+Inside the apache-tomcat-x.x.x
+bin     tomcat services start/stop
+conf    holds configuration files for Tomcat. Important files such as server.xml (for server configuration), web.xml (for web application configuration), and tomcat-users.xml (for user authentication and authorization) are found here.
+lib     libraries
+logs    log details(access logs, error logs etc)
+temp
+webapps Generated war file from maven will be copied to here
+work
