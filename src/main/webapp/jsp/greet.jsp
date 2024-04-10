@@ -10,14 +10,15 @@
     <h1>Greeting Page</h1>
     
     <%
-        // Retrieve the submitted name from the request
-        String name = request.getParameter("name");
-        
-        // Check if the name is not null and not empty
-        if (name != null && !name.isEmpty()) {
-            out.println("<h2>Hello, " + name + "!</h2>");
+        if (request.getMethod().equalsIgnoreCase("POST")) {
+            String name = request.getParameter("name");
+            if (name != null && !name.isEmpty()) {
+                out.println("<h2>Hello, " + name + "!</h2>");
+            } else {
+                out.println("<h2>Please enter your name in the <a href=\"index.jsp\">form</a>.</h2>");
+            }
         } else {
-            out.println("<h2>Please enter your name in the <a href=\"index.jsp\">form</a>.</h2>");
+            out.println("<h2>Please submit the form to see the greeting.</h2>");
         }
     %>
 </body>
