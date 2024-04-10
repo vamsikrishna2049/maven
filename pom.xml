@@ -8,6 +8,7 @@
     <name>Java Home myweb</name>
     <url>http://maven.apache.org</url>
 
+             <!-- This section will be edited by DevOps Engineer -->
     <properties>
         <docker.image.prefix>kammana</docker.image.prefix>
         <sonar.host.url>http://13.30.199.208:9000/</sonar.host.url>
@@ -25,6 +26,7 @@
         </dependency>
     </dependencies>
 
+                      <!-- This section will be edited by DevOps Engineer -->
     <distributionManagement>
         <snapshotRepository>
             <id>nexusRepo</id>
@@ -53,5 +55,6 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
+
+<!-- This Entire file will be written by developers and Devops Engineer will be involved in 2 Sections i.e., Properties and Distribution-->
