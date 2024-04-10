@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Welcome to my JSP Page!</h1>
-    <p>This is a simple example of a JSP page.</p>
+    <p>Simple example of a JSP page.</p>
     <%-- Java code can go here --%>
     <% 
         String message = "Hello, world!";
