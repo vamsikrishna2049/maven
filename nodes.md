@@ -11,22 +11,22 @@ while the **site** lifecycle handles the creation of your project's web site.
 
 **Under default lifecycle**
 
-1. **validate** - validate the project is correct and all necessary information is available
+1. **validate** - Validates the project is correct and all necessary information is available
 
 2. **compile** - compile the source code of the project
 
-3. **test** - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+3. **test** - Test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed.
  
 4. **package** - It will pack the entire compiled code and package it in its distributable format, such as a JAR/WAR/EAR.
 
-5. **verify** - run any checks on results of integration tests to ensure quality criteria are met
+5. **verify** - Run any checks on results of integration tests to ensure quality criteria are met
 
-6. **install** - install the package into the local maven repository, for use as a dependency in other projects locally
+6. **install** - Install the package into the local maven repository, for use as a dependency in other projects locally
 
-7. **deploy** - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
+7. **deploy** - Done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 
 
-**site** - Generates project documentation and reports, usually in 'HTML' format. Lifecycle handles the creation of your project's web site.
+**site** - Generates project documentation and reports, usually in `HTML` format. Lifecycle handles the creation of your project's web site.
 
 
 Ex:
