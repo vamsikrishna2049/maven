@@ -1,22 +1,35 @@
-In Maven, goals are tasks that can be executed during the build process. Maven uses the concept of plugins to provide these goals. Some common Maven goals include:
+**A Build Lifecycle is Made Up of Phases**
 
-1. **clean**: Deletes the `target` directory which contains the compiled bytecode, generated source files, and other build artifacts.
+There are three built-in build lifecycles: default, clean and site. 
 
-2. **compile**: Compiles the source code of the project.
+The **default** lifecycle handles your project deployment, 
+the **clean** lifecycle handles project cleaning, 
+while the **site** lifecycle handles the creation of your project's web site.
 
-3. **test**: Runs the unit tests for the project using a suitable unit testing framework.
 
-4. **package**: Packages the compiled code into a distributable format, such as a JAR or WAR file.
+**clean**: Deletes the `target` directory which contains the compiled bytecode, generated source files, and other build artifacts.
 
-5. **install**: Installs the package into the local Maven repository, making it available for other projects locally.
+**Under default lifecycle**
 
-6. **deploy**: Copies the final package to the remote repository for sharing with other developers and projects.
+1. **validate** - validate the project is correct and all necessary information is available
 
-7. **site**: Generates project documentation and reports, usually in HTML format.
+2. **compile** - compile the source code of the project
 
-These goals are executed using Maven commands in the form of `mvn <goal>` where `<goal>` is replaced with the specific goal you want to execute.
-Maven's flexibility allows developers to define custom goals and bind them to different phases of the build lifecycle to fit specific project needs.
+3. **test** - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+ 
+4. **package** - It will pack the entire compiled code and package it in its distributable format, such as a JAR/WAR/EAR.
 
+5. **verify** - run any checks on results of integration tests to ensure quality criteria are met
+
+6. **install** - install the package into the local maven repository, for use as a dependency in other projects locally
+
+7. **deploy** - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
+
+
+**site** - Generates project documentation and reports, usually in HTML format. Lifecycle handles the creation of your project's web site.
+
+
+Ex:
 mvn validate
 
 mvn clean
