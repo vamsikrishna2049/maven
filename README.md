@@ -177,6 +177,7 @@ mvn compile verify clean
 
 
 **What is differences between snapshots and releases?**
+
 **Release:**
 In side the pom.xml file, we will mention the versionID
 Ex:
