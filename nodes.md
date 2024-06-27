@@ -26,7 +26,7 @@ while the **site** lifecycle handles the creation of your project's web site.
 7. **deploy** - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 
 
-**site** - Generates project documentation and reports, usually in HTML format. Lifecycle handles the creation of your project's web site.
+**site** - Generates project documentation and reports, usually in 'HTML' format. Lifecycle handles the creation of your project's web site.
 
 
 Ex:
