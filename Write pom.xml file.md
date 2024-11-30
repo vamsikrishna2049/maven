@@ -1,126 +1,189 @@
 # Example:
 ```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+    
+    <!-- Model Version for Maven -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Project Coordinates -->
-    <groupId>com.practisedomain</groupId>
-    <artifactId>practisedomain</artifactId>
-    <version>1.0.0</version>
-    <packaging>war</packaging>
-    <description>Example AWS project</description>
-    <name>Practisedomain AWS Project</name>
+    <!-- Group and Artifact Information for Maven -->
+    <groupId>com.mt</groupId> <!-- The base package or organization identifier -->
+    <artifactId>maven-web-application</artifactId> <!-- The project name or identifier -->
+    <packaging>war</packaging> <!-- The packaging type for the project, WAR for web applications -->
+    <version>1.0.0-SNAPSHOT</version> <!-- Version of the project -->
+    !--<version>1.0.0</version --> <!-- Version of the project -->
 
-    <!-- Project Properties -->
-    <properties>
-        <jdk.version>1.8</jdk.version>
-        <spring.version>5.3.8</spring.version>
-    </properties>
+    <!-- Name and Description of the Project -->
+    <name>maven-web-application</name>
+    <description>Maven Web Project for Java Project</description>
 
-    <!-- Organization Details -->
+    <!-- Organization Information -->
     <organization>
-        <name>Practisedomain</name>
-        <url>http://www.practisedomain.cloud</url>
+        <name>Practise Domain</name> <!-- The name of the organization -->
+        <url>http://practisedomain.cloud</url> <!-- The URL of the organization -->
     </organization>
 
-    <!-- Project Dependencies -->
+    <!-- Properties Section -->
+    <properties>
+        <!-- Project Specific Properties -->
+        <jdk.version>1.8</jdk.version> <!-- Java version used for the project -->
+        <spring.version>5.1.2.RELEASE</spring.version> <!-- Version of Spring Framework -->
+        <junit.version>4.11</junit.version> <!-- Version of JUnit used for testing -->
+        <log4j.version>1.2.17</log4j.version> <!-- Version of Log4j logging framework -->
+        
+        <!-- SonarQube Configuration for Code Quality Analysis -->
+        <sonar.host.url>http://18.138.81.149:9000/</sonar.host.url> <!-- SonarQube server URL -->
+        <sonar.login>admin</sonar.login> <!-- SonarQube login -->
+        <sonar.password>passw0rd</sonar.password> <!-- SonarQube password -->
+
+        <!-- Encoding for Source Files and Report Outputs -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <!-- Dependencies Section -->
     <dependencies>
-        <!-- Spring Core Dependency -->
+        <!-- JSON Library Dependency -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.json</groupId> <!-- Group ID for JSON library -->
+            <artifactId>json</artifactId> <!-- Artifact ID for JSON library -->
+            <version>20160212</version> <!-- Version of JSON library -->
         </dependency>
 
-        <!-- Spring Web Dependency -->
+        <!-- JUnit for Unit Testing (Test Scope) -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version> <!-- JUnit version -->
+            <scope>test</scope> <!-- Indicates that this dependency is only needed during tests -->
+        </dependency>
+
+        <!-- Servlet API (Provided Scope) -->
+        <dependency>
+            <groupId>javax.servlet</groupId> <!-- Group ID for Servlet API -->
+            <artifactId>javax.servlet-api</artifactId> <!-- Artifact ID for Servlet API -->
+            <version>3.1.0</version> <!-- Version of the Servlet API -->
+            <scope>provided</scope> <!-- Servlet API is already provided by the container (e.g., Tomcat) -->
+        </dependency>
+
+        <!-- Mockito for Mocking in Unit Tests (Test Scope) -->
+        <dependency>
+            <groupId>org.mockito</groupId> <!-- Group ID for Mockito -->
+            <artifactId>mockito-core</artifactId> <!-- Artifact ID for Mockito -->
+            <version>1.9.5</version> <!-- Version of Mockito -->
+            <scope>test</scope> <!-- Mockito is only needed during testing -->
+        </dependency>
+
+        <!-- Spring Core Dependency (For Core Spring Framework functionality) -->
+        <dependency>
+            <groupId>org.springframework</groupId> <!-- Group ID for Spring Framework -->
+            <artifactId>spring-core</artifactId> <!-- Artifact ID for Spring Core -->
+            <version>${spring.version}</version> <!-- Version defined in the properties section -->
+        </dependency>
+
+        <!-- Spring Web Dependency (For web-based functionality in Spring) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Spring WebMVC Dependency -->
+        <!-- Spring WebMVC Dependency (For Spring MVC Framework) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Spring Context Dependency -->
+        <!-- Spring Context Dependency (For Spring Context functionality) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Example Dependency (JUnit for testing) -->
+        <!-- Provided Servlet API (Again, provided by the container) -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
-    <!-- Distribution Management -->
+    <!-- Distribution Management (Nexus Repository Configuration) -->
     <distributionManagement>
-        <!-- For Releases -->
+        <!-- Release Repository Configuration -->
         <repository>
-            <id>Nexus Repository</id>
-            <name>Releases Nexus Repository</name>
-            <url>http://13.212.71.229:9980/practisedomain/repository/aws-project-release/</url>
+            <id>nexus</id> <!-- Repository ID -->
+            <name>Practise Domain Releases Nexus Repository</name> <!-- Repository name -->
+            <url>http://13.212.71.229:9980/practisedomain/repository/practisedomain-snapshot/</url> <!-- Repository URL -->
         </repository>
 
-        <!-- For Snapshots -->
+        <!-- Snapshot Repository Configuration (For Development versions) -->
         <snapshotRepository>
-            <id>Nexus Repository</id>
-            <name>Snapshots Nexus Repository</name>
-            <url>http://13.212.71.229:9980/practisedomain/repository/aws-project-snapshot/</url>
+            <id>nexus</id>
+            <name>Practise Domain Snapshot Nexus Repository</name>
+            <url>http://240.212.71.229:9980/practisedomain/repository/practisedomain-release/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <!-- Build Configuration -->
     <build>
-        <finalName>practisedomain</finalName>  <!-- Specify the final name of the WAR file -->
+        <!-- Final Name of the Built Artifact (WAR file) -->
+        <finalName>maven-web-application</finalName>
 
+        <!-- Plugins used during the build process -->
         <plugins>
-            <!-- Compiler Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                </configuration>
-            </plugin>
 
-            <!-- WAR Plugin -->
+            <!-- Maven WAR Plugin for Packaging Web Applications -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.3.2</version> <!-- Version of the WAR plugin -->
             </plugin>
 
-            <!-- Jetty Plugin for running the web app locally -->
+            <!-- Maven Compiler Plugin for Compiling Java Code -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version> <!-- Version of the Compiler plugin -->
+                <configuration>
+                    <source>${jdk.version}</source> <!-- Specifies the Java version to use for compiling source code -->
+                    <target>${jdk.version}</target> <!-- Specifies the Java version to use for compiled bytecode -->
+                </configuration>
+            </plugin>
+
+            <!-- Jetty Maven Plugin (For Running the Application Locally) -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.11.v20150529</version>
+                <version>9.2.11.v20150529</version> <!-- Jetty version -->
                 <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <scanIntervalSeconds>10</scanIntervalSeconds> <!-- Time interval for reloading the application -->
                     <webApp>
-                        <contextPath>/practisedomain</contextPath>  <!-- Set context path -->
+                        <contextPath>/maven-web-application</contextPath> <!-- The context path for the application -->
                     </webApp>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Eclipse Plugin (For Eclipse IDE Integration) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version> <!-- Version of the Eclipse plugin -->
+                <configuration>
+                    <downloadSources>true</downloadSources> <!-- Downloads sources of dependencies -->
+                    <downloadJavadocs>true</downloadJavadocs> <!-- Downloads Javadoc of dependencies -->
+                    <wtpversion>2.0</wtpversion> <!-- Version for Web Tools Platform integration -->
+                    <wtpContextName>maven-web-application</wtpContextName> <!-- The context name in Eclipse -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
-
 ```
 
 # Step 1: Define Project Coordinates
