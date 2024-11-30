@@ -6,14 +6,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project Coordinates -->
-    <groupId>com.practisedomain</groupId> <!-- Group or organization identifier -->
-    <artifactId>practisedomain</artifactId> <!-- The name of the project/artifact -->
-    <version>1.0.0</version> <!-- The version of the project -->
-    <packaging>war</packaging> <!-- The type of packaging (WAR, JAR, etc.) -->
+    <groupId>com.practisedomain</groupId>
+    <artifactId>practisedomain</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
     <description>Example AWS project</description>
-    <name>Practisedomain AWS Project</name> <!-- Simplified name -->
+    <name>Practisedomain AWS Project</name>
 
-    <!-- Project properties (optional, can be filled as per needs) -->
+    <!-- Project Properties -->
     <properties>
         <jdk.version>1.8</jdk.version>
         <spring.version>5.3.8</spring.version>
@@ -27,16 +27,44 @@
 
     <!-- Project Dependencies -->
     <dependencies>
-        <!-- Example Dependency (Spring Web) -->
+        <!-- Spring Core Dependency -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring Web Dependency -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- Additional dependencies can be added here -->
+
+        <!-- Spring WebMVC Dependency -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring Context Dependency -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Example Dependency (JUnit for testing) -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
-    <!-- Distribution Management (where to deploy your artifact) -->
+    <!-- Distribution Management -->
     <distributionManagement>
         <!-- For Releases -->
         <repository>
@@ -53,9 +81,12 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <!-- Optional Build Configuration -->
+    <!-- Build Configuration -->
     <build>
+        <finalName>practisedomain</finalName>  <!-- Specify the final name of the WAR file -->
+
         <plugins>
+            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -63,6 +94,26 @@
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+
+            <!-- Jetty Plugin for running the web app locally -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.11.v20150529</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/practisedomain</contextPath>  <!-- Set context path -->
+                    </webApp>
                 </configuration>
             </plugin>
         </plugins>
