@@ -1,3 +1,77 @@
+# Example:
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project Coordinates -->
+    <groupId>com.practisedomain</groupId> <!-- Group or organization identifier -->
+    <artifactId>practisedomain</artifactId> <!-- The name of the project/artifact -->
+    <version>1.0.0</version> <!-- The version of the project -->
+    <packaging>war</packaging> <!-- The type of packaging (WAR, JAR, etc.) -->
+    <description>Example AWS project</description>
+    <name>Practisedomain AWS Project</name> <!-- Simplified name -->
+
+    <!-- Project properties (optional, can be filled as per needs) -->
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <spring.version>5.3.8</spring.version>
+    </properties>
+
+    <!-- Organization Details -->
+    <organization>
+        <name>Practisedomain</name>
+        <url>http://www.practisedomain.cloud</url>
+    </organization>
+
+    <!-- Project Dependencies -->
+    <dependencies>
+        <!-- Example Dependency (Spring Web) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- Additional dependencies can be added here -->
+    </dependencies>
+
+    <!-- Distribution Management (where to deploy your artifact) -->
+    <distributionManagement>
+        <!-- For Releases -->
+        <repository>
+            <id>Nexus Repository</id>
+            <name>Releases Nexus Repository</name>
+            <url>http://13.212.71.229:9980/practisedomain/repository/aws-project-release/</url>
+        </repository>
+
+        <!-- For Snapshots -->
+        <snapshotRepository>
+            <id>Nexus Repository</id>
+            <name>Snapshots Nexus Repository</name>
+            <url>http://13.212.71.229:9980/practisedomain/repository/aws-project-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- Optional Build Configuration -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
+```
+
 # Step 1: Define Project Coordinates
 
 ```xml
