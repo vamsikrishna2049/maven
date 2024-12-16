@@ -28,6 +28,7 @@ In Maven, the lifecycle phases **`presite`**, **`site`**, and **`post-site`** ar
 
 ### 3. **`post-site` Phase**
 - **Purpose**: The `post-site` phase is executed after the site has been generated. It is used to perform tasks related to deploying, finalizing, or processing the generated site.
+  
 - **Usage**: This phase is generally used for tasks like:
   - **Deploying the site**: After generating the site, you may want to deploy it to a web server or a remote repository.
   - **Archiving**: It might be used to archive or publish the site generated in the `site` phase.
@@ -36,8 +37,9 @@ In Maven, the lifecycle phases **`presite`**, **`site`**, and **`post-site`** ar
   The `post-site` phase is usually triggered automatically after `site` if it is part of the Maven lifecycle. For example, if you're deploying the site to a remote server after generating it, the `post-site` phase will handle that task.
 
 - **When It Runs**: It runs **after** the `site` phase and is part of the `site-deploy` lifecycle. The `post-site` phase is invoked automatically if the `site-deploy` phase is executed. It is typically **not invoked directly** unless you are customizing the build lifecycle.
+
   **Example**: You may deploy the site to an HTTP server after it has been generated:
-  ```bash
+  ```
   mvn site:deploy
   ```
 
@@ -52,16 +54,14 @@ The `presite`, `site`, and `post-site` phases are part of the Maven Site Plugin 
    - **`presite`**: Prepares necessary resources (if configured).
    - **`site`**: Generates the site and reports.
    - **`post-site`**: Deploys the generated site to a server.
-
 ```
-**mvn site**
+mvn site
 ```
 
 If you want to deploy the site after it is generated (for example, to a remote server), you could use:
 ```
-**mvn site:deploy**
+mvn site:deploy
 ```
-
 This would trigger the full `site` lifecycle, including the deployment of the generated site.
 
 ### Conclusion
