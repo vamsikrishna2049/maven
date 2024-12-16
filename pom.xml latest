@@ -1,132 +1,161 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mt</groupId>
-    <artifactId>maven-web-application</artifactId> <!-- artifcat name (name)-->
-    <packaging>war</packaging>   <!-- for web applications (war), Java Applications (jar), Enterprise Applications (ear)  -->
-    <version>0.0.1-SNAPSHOT</version> <!-- version + snapshot/release/hotfix or bug -->
+    <!-- Project Coordinates -->
+    <groupId>com.example</groupId> <!-- Replace with your project's groupId -->
+    <artifactId>project-artifact-id</artifactId> <!-- Replace with your project's artifactId -->
+    <version>0.0.1-SNAPSHOT</version> <!-- Define your version -->
+    <packaging>jar</packaging>
 
-    <name>maven-web-application</name>
-    <description>web on java project</description>
+    <name>project-name</name> <!-- Replace with your project name -->
+    <url>http://example.com</url> <!-- Replace with your project's URL -->
 
     <organization>
-        <name>My Techy</name>
-        <url>http://mytechzone.com/</url>
+        <name>Your Organization Name</name> <!-- Replace with your organization name -->
+        <url>http://your-organization-url.com</url> <!-- Replace with your organization's URL -->
     </organization>
 
+    <description>Your project description</description>
+
+    <!-- Project Properties -->
     <properties>
-        <jdk.version>1.8</jdk.version>
-        <spring.version>5.1.2.RELEASE</spring.version>
-        <junit.version>4.11</junit.version>
-        <log4j.version>1.2.17</log4j.version>
-        <sonar.host.url>http://54.165.242.96:9000/</sonar.host.url>
-        <sonar.login>admin</sonar.login>
-        <sonar.password>vaMsi@20</sonar.password>
+        <sonar.host.url>http://sonar.host.url/</sonar.host.url> <!-- Replace with your SonarQube host URL -->
+        <sonar.login>your-sonar-login</sonar.login> <!-- Replace with your SonarQube login -->
+        <sonar.password>your-sonar-password</sonar.password> <!-- Replace with your SonarQube password -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>11</maven.compiler.source> <!-- Set Java version to use -->
+        <maven.compiler.target>11</maven.compiler.target> <!-- Set Java version to target -->
     </properties>
 
+    <!-- Dependencies -->
     <dependencies>
-        <!-- Dependencies should go here -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20160212</version>
-        </dependency>
-
-        <!-- test dependencies -->
+        <!-- JUnit for testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <version>4.13.2</version> <!-- Updated to a more recent version -->
+            <scope>test</scope> <!-- Set scope to test -->
         </dependency>
 
-        <!-- servlet API -->
+        <!-- Example dependency for Spring Boot -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.5.0</version> <!-- Specify your Spring Boot version -->
         </dependency>
 
-        <!-- Spring dependencies -->
+        <!-- Example for a database connector, e.g., MySQL -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.25</version>
         </dependency>
     </dependencies>
 
+    <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+
+        <!-- Example of a custom repository -->
+        <repository>
+            <id>example-repo</id>
+            <url>https://example.com/repository</url>
+        </repository>
+    </repositories>
+
+    <!-- Build Configuration -->
     <build>
-        <finalName>maven-web-application</finalName>
-
         <plugins>
-            <!-- Plugins should go here -->
+            <!-- Plugin to build an executable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.example.MainClass</mainClass> <!-- Set your main class here -->
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.11.v20150529</version>
-                <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webApp>
-                        <contextPath>/maven-web-application</contextPath>
-                    </webApp>
-                </configuration>
-            </plugin>
-
+            <!-- Plugin to package a shaded JAR (if needed for dependency bundling) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                    <wtpversion>2.0</wtpversion>
-                    <wtpContextName>maven-web-application</wtpContextName>
-                </configuration>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
+
+        <!-- Add Resource Filtering -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
+    <!-- Source Control Management and Issue Management -->
+    <scm>
+        <connection>scm:git:https://github.com/your-repo-url.git</connection> <!-- Replace with your repository -->
+        <developerConnection>scm:git:https://github.com/your-repo-url.git</developerConnection>
+        <url>https://github.com/your-repo-url</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/your-repo-url/issues</url>
+    </issueManagement>
+
+    <!-- Profiles (for different build configurations) -->
+    <profiles>
+        <!-- Profile for production environment -->
+        <profile>
+            <id>production</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active> <!-- Activate production profile -->
+            </properties>
+        </profile>
+
+        <!-- Profile for development environment -->
+        <profile>
+            <id>development</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active> <!-- Activate development profile -->
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- Distribution Management -->
     <distributionManagement>
+        <!-- Repository for releases -->
         <repository>
-            <id>nexus</id> <!-- This id should match the server id in settings.xml -->
-            <url>http://52.204.32.101:8081/repository/vamsi-snapshots/</url>
+            <id>releases</id>
+            <url>https://repo.example.com/releases</url> <!-- URL of your repository for release artifacts -->
         </repository>
-        
-        <repository>
-            <id>nexus-release</id> <!-- This id should match the server id in settings.xml -->
-            <url>http://52.204.32.101:8081/repository/vamsi-Release/</url>
-        </repository>
+
+        <!-- Repository for snapshots -->
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>https://repo.example.com/snapshots</url> <!-- URL of your repository for snapshot artifacts -->
+        </snapshotRepository>
     </distributionManagement>
 
 </project>
