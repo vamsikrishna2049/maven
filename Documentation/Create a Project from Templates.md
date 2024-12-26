@@ -46,6 +46,7 @@ A **Maven Archetype** is a template of a project which can be used to create new
    -archetypeVersion=1.5: This specifies the version of the archetype you want to use. In this case, it's version 1.5 of the maven-archetype-quickstart. The version ensures that Maven uses a specific release of the archetype template, which may have different configurations or templates compared to other versions.
 
 # Structure:
+```lua
 project
 |-- .mvn
 |   |-- jvm.config
@@ -60,6 +61,7 @@ project
         `-- java
             `-- $package
                 `-- AppTest.java
+```
 
 # Note:
    Maven provides a number of predefined archetypes, such as `maven-archetype-quickstart` (for a simple Java application), `maven-archetype-webapp` (for web applications), and many more.
