@@ -26,6 +26,8 @@ A **Maven Archetype** is a template of a project which can be used to create new
 - **maven-archetype-site-skin**: An archetype to generate a sample Maven Site Skin.
 - **maven-archetype-webapp**: An archetype to generate a sample Maven Webapp project.
 
+---
+
 2. **Creating a New Project from an Archetype**
    To create a new project from an archetype, you use the `mvn archetype:generate` command. Here's the basic syntax:
 
@@ -34,14 +36,15 @@ A **Maven Archetype** is a template of a project which can be used to create new
    ```
    Maven to create a new project using the maven-archetype-quickstart archetype (version 1.5), which is a basic template for a Java application.
 
-   -DarchetypeGroupId=org.apache.maven.archetypes
+   **-DarchetypeGroupId=org.apache.maven.archetypes**
    -D: This flag is used to define a system property in Maven.
    archetypeGroupId=org.apache.maven.archetypes: This defines the group ID of the archetype to use. In this case, it's org.apache.maven.archetypes, which is the group ID for Maven's predefined archetypes.
 
-   -archetypeArtifactId=maven-archetype-quickstart: This specifies the artifact ID of the archetype. Here, it is maven-archetype-quickstart, which is a standard archetype used to create a simple Java application project. This archetype typically creates a project with:
-   A basic HelloWorld Java class.
-   A simple pom.xml file for the project’s configuration.
-   A basic src/main/java directory structure.
+   **-archetypeArtifactId=maven-archetype-quickstart:**
+    This specifies the artifact ID of the archetype. Here, it is maven-archetype-quickstart, which is a standard archetype used to create a simple Java application project. This archetype typically creates a project with:
+   - A basic HelloWorld Java class.
+   - A simple pom.xml file for the project’s configuration.
+   - A basic src/main/java directory structure.
 
    -archetypeVersion=1.5: This specifies the version of the archetype you want to use. In this case, it's version 1.5 of the maven-archetype-quickstart. The version ensures that Maven uses a specific release of the archetype template, which may have different configurations or templates compared to other versions.
 
